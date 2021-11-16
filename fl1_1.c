@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include <wiringPi.h>
+#include <stdlib.h>
+
 
 #define SW1 10
 #define SW2 11
+#define LED1 1
+#define LED2 4
+
 int main(void)
 {
     int rcv1, rcv2 = 0;
-    If (wiringPiSetup() < 0) {
+    if(wiringPiSetup() < 0){
         exit(0);
     }
 
@@ -15,7 +20,7 @@ int main(void)
     pinMode(SW1, INPUT);
     pinMode(SW2, INPUT);
 
-    while (1) {
+    while(1){
         rcv1 = digitalRead(SW1);
         digitalWrite(LED1, rcv1);
         rcv2 = digitalRead(SW2);
