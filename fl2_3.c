@@ -2,11 +2,11 @@
 #include <wiringPi.h>
 #include <stdlib.h>
 
-#define LED1 18
+#define LED1 1
 
 void pwm(double on, double off)
 {
-    for (int n = 0; n < 30; n++)
+    for(int n = 0; n < 30; n++)
     {
         digitalWrite(LED1, 1);
         delay(on * 1000);
@@ -17,12 +17,11 @@ void pwm(double on, double off)
 void main(void)
 {
     double sub = 0.0;
-    If(wiringPiSetup() < 0)
-    {
+    if(wiringPiSetup() < 0){
         exit(0);
     }
     pinMode(LED1, OUTPUT);
-    for (int i = 0; i < 35; i++)
+    for(int i = 0; i < 35; i++)
     {
         sub = i * 0.05;
         pwm(2.0 - sub, 1.0);

@@ -2,8 +2,8 @@
 #include <wiringPi.h>
 #include <stdlib.h>
 
-#define LED1 18
-#define LED2 23
+#define LED1 1
+#define LED2 4
 #define SW1 10
 
 void DisplayState(int state)
@@ -33,7 +33,7 @@ void main(void)
 {
     int State = 0;
     int i = 0;
-    If(wiringPiSetup() < 0)
+    if(wiringPiSetup() < 0)
     {
         exit(0);
     }
@@ -46,14 +46,14 @@ void main(void)
         DisplayState(State);
         while (1)
         {
-            if (digitalRead(SW1) == 0)
+            if(digitalRead(SW1) == 0)
             {
                 break;
             }
         }
         while (1)
         {
-            if (digitalRead(SW1) == 1)
+            if(digitalRead(SW1) == 1)
             {
                 break;
             }
