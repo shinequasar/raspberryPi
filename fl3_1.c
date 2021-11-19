@@ -60,7 +60,7 @@ void  read_dth11()                    // dht데이터 읽기 함수
 	 * 40비트를 다 확인했다면 (8비트 x 5 ) 체크섬 데이터와 오류체크를 해서
 	 * 오류가 없으면 데이터를 출력함.
      */
-    farenheit = data[2]*9./5.+32;
+    int farenheit = data[2]*9./5.+32;
 	if ( (j >= 40) && (data[4] == ( (data[0] + data[1] + data[2] + data[3]) & 0xFF) ) )
 	{        //에러가 없으면 습도 및 온도 출력
 		printf( "Humidity = %d.%d %% Temperature(Celsius) = %d.%d C  Temperature(Fahrenheit) =  %.1f F\n", data[0], data[1], data[2], data[3], farenheit);
