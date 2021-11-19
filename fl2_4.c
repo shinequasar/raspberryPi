@@ -5,7 +5,7 @@
 const int PWM = 1;       // PWM LED1 pin 12
 const int LED2 = 4;      // pin 16
 const int SW1 = 10;      // pin 11
-int pwmValue = 4; // LED brightness
+int pwmValue = 75; // LED brightness
 int main(void)
 {
 
@@ -20,8 +20,6 @@ int main(void)
     printf("Blinker is running! Press CTRL+C to quit.\n");
     while (1)
     {
-	for(int i=0;i<1000; i+=100){
-    	pwmValue=pwmValue+i;
 	if(digitalRead(SW1))
         {                            // button release
             pwmWrite(PWM, pwmValue); // PWM LED at bright setting
@@ -36,6 +34,5 @@ int main(void)
             digitalWrite(LED2, LOW);        // Turn LED OFF
             delay(1000);                     // Wait 100ms again
         }
-	}
    }
 }
