@@ -71,7 +71,7 @@ void  read_dth11()                    // dht데이터 읽기 함수
 
 int main( void )
 {
-	printf( "F/3Raspberry Pi DHT11 temperature/humidity test\n" );     
+	printf( "F/3 Raspberry Pi DHT11 temperature/humidity test\n" );     
 
 	if ( wiringPiSetupGpio() == -1 )    //라즈베리파이의 BCM GPIO 핀번호를 사용하겠다고 선언
 		exit( 1 );
