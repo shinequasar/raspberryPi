@@ -4,7 +4,7 @@
 #define TRUE 1
 #define TRIG 4 //초음파센서 출력핀
 #define ECHO 5 //초음파센서 입력핀
-#define BUZ 12;
+#define BUZZER 12;
 
 void setup()
 {
@@ -43,6 +43,13 @@ int getCM()
     return distance;
 }
 
+void makeSound(int time){
+    digitalWrite(BUZZER,LOW);
+    delay(time);
+    digitalWrite(BUZZER,HIGH);
+    delay(time);           
+}
+
 int main(void)
 {
     setup();
@@ -53,17 +60,14 @@ int main(void)
         delay(1000);
 
         if(20 < dist <= 30){
-            pinMode(BUZ, PWM_OUTPUT);
+            makeSound(7);
         } 
-        if(10 < dist <= 20){
-            
+        else if(10 < dist <= 20){
+             makeSound(4);
         }
-        if(0 < dist <= 10){
-            
-        }
-
-
-
+        else if(0 < dist <= 10){
+             makeSound(1);
+        }else digitalWrite(BUZZER,LOW);
     }
     return 0;
 }
