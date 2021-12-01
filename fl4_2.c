@@ -8,18 +8,14 @@
 int cdsControl()
 {
     int i;
-    for (i = 0; i < 10000000; i++)
+    while(1)
     {
 	//printf("cdsControl start : %d \n",i);
-        if(digitalRead(CDS) == HIGH) /* 빛이감지되면(HIGH) */
+        if(digitalRead(CDS) == LOW) /* 빛이감지되면(HIGH) */
         {
             digitalWrite(LED, HIGH); /* LED On */
-            delay(1000);
+	    delay(500);
             digitalWrite(LED, LOW); /* LED Off */
-	    delay(1000);
-	    digitalWrite(LED2, HIGH);
-	    delay(1000);
-	    digitalWrite(LED2, LOW);
         }
     }
     return 0;
@@ -38,5 +34,4 @@ int main()
     pinMode(LED, OUTPUT); /* Pin 모드를 출력으로 설정 */
     pinMode(LED2,OUTPUT);
     cdsControl();
-    return 0;
 }

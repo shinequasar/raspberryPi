@@ -77,7 +77,7 @@ int main(void) {
 		return -1;
 	}
 
-	printf(">> F/3Raspberry Pi DHT11 temperature/humidity test\n");	
+	printf(">> F/3 Raspberry Pi DHT11 temperature/humidity test\n");	
 	while(1) {
 
 	    read_dth11();
