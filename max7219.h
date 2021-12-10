@@ -30,10 +30,8 @@ void send_SPI_16bits(unsigned short data)
 void send_MAX7219(unsigned short reg_number, unsigned short data1, unsigned short data2)
 {
     digitalWrite(LOAD, 1);
-    //send_SPI_16bits((reg_number << 8) + data2);
-    //send_SPI_16bits((reg_number << 8) + data1);
-    send_SPI_16bits((reg_number << 8));
-    send_SPI_16bits((reg_number << 8));
+    // send_SPI_16bits((reg_number << 8) + data2);
+    send_SPI_16bits((reg_number << 8) + data1);
     digitalWrite(LOAD, 0); // to latch
     digitalWrite(LOAD, 1);
 }
