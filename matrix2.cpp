@@ -26,10 +26,10 @@ int main(int argc, char** argv)
     pinMode(CLOCK, OUTPUT);
     pinMode(LOAD, OUTPUT);
  
-    send_MAX7219(SCAN_LIMIT, 7, 7);
-    send_MAX7219(DECODE_MODE, 0, 0);
-    send_MAX7219(INTENSITY, 8, 8);
-    send_MAX7219(SHUTDOWN, 1, 1);
+    send_MAX7219(SCAN_LIMIT, 7);
+    send_MAX7219(DECODE_MODE, 0);
+    send_MAX7219(INTENSITY, 1);
+    send_MAX7219(SHUTDOWN, 1);
  
     int digit_table[11] = { 126, 48, 109, 121, 51, 91, 95, 114, 127, 123, 0 };
     int dot_table[9][9] =
