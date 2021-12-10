@@ -31,7 +31,7 @@ RPI_V2_GPIO_P1_13->RPI_GPIO_P1_13:
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <wiringPi.h>
+// #include <wiringPi.h>
 #include <ctype.h>
 #define uchar unsigned char
 #define uint unsigned int
