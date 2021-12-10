@@ -37,9 +37,9 @@ RPI_V2_GPIO_P1_13->RPI_GPIO_P1_13:
 #define uint unsigned int
 
 
-//#define Max7219_pinCLK  RPI_GPIO_P1_11
+#define Max7219_pinCLK  RPI_GPIO_P1_19
 #define Max7219_pinCS  RPI_GPIO_P1_24
-//#define Max7219_pinDIN  RPI_V2_GPIO_P1_13
+#define Max7219_pinDIN  RPI_V2_GPIO_P1_23
 
 char characters[37] = { 
 	'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
