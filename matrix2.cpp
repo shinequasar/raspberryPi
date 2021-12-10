@@ -5,7 +5,7 @@
  
 #include <wiringPi.h>
  
-#include "matrix_h.h"
+#include "max7219.h"
  
 void intHandler(int dummy)
 {
