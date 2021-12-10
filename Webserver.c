@@ -101,7 +101,7 @@ void *clnt_connection(void *arg)
         fclose(clnt_write);
         return NULL;
     }
-    
+   
     strcpy(file_name, strtok(NULL, " /"));
     printf("file_name : %s\n", file_name);
     if(strstr(file_name, "?") != NULL) {
