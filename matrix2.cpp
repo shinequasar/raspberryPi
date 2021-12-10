@@ -9,7 +9,7 @@
  
 void intHandler(int dummy)
 {
-    send_MAX7219(SHUTDOWN, 0, 0);
+    send_MAX7219(SHUTDOWN, 0);
     exit(0);
 }
  
