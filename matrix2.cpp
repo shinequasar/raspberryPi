@@ -64,7 +64,7 @@ int main(int argc, char** argv)
     // send_MAX7219(8, digit_table[0], dot_table[1][8]);
  
     send_MAX7219(1, digit_table[0]);
-    // send_MAX7219(2, digit_table[1]);
+    send_MAX7219(2, digit_table[1]);
     // send_MAX7219(3, digit_table[2]);
     // send_MAX7219(4, digit_table[3]);
     // send_MAX7219(5, digit_table[4]);
