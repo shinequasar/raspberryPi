@@ -172,4 +172,4 @@ int main(int argc, char *argv[])
 	led_print(36, 36);
 	bcm2835_spi_end();
 	bcm2835_close();
-	
+}
