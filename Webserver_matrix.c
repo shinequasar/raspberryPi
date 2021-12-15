@@ -248,112 +248,234 @@ void sendError(FILE *fp)
     fflush(fp);
 }
 
-void startLED(int turnOnLED[][9]){
-    int turnOn[9][9]={ 0, };      
-    memcpy(turnOn, turnOnLED, sizeof(turnOnLED));
+// void startLED(int turnOnLED[][9]){
+//     int turnOn[9][9];      
+//     memcpy(turnOn, turnOnLED, sizeof(turnOnLED));
 
-    for(;;){//무한루프
-    for(int i=0; i<8; i++) {
-        //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨
-        MAX7219Send(DECODE_MODE, 0,0,0,0);   // Set BCD decode mode on
-        MAX7219Send(DISPLAY_TEST, 0,0,0,0);  // Disable test mode
-        MAX7219Send(INTENSITY, 1,1,1,1);     // set brightness 0 to 15
-        MAX7219Send(SHUTDOWN, 1,1,1,1);      // come out of shutdown mode   / turn on the digits
+//     for(;;){//무한루프
+//     for(int i=0; i<8; i++) {
+//         //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨
+//         MAX7219Send(DECODE_MODE, 0,0,0,0);   // Set BCD decode mode on
+//         MAX7219Send(DISPLAY_TEST, 0,0,0,0);  // Disable test mode
+//         MAX7219Send(INTENSITY, 1,1,1,1);     // set brightness 0 to 15
+//         MAX7219Send(SHUTDOWN, 1,1,1,1);      // come out of shutdown mode   / turn on the digits
 
-        //행으로 8개 사용 for문 돌려서 내려가는거 구현한거
-        //오른쪽으로 흘려가게 해주는걸 생각해줘야함 
+//         //행으로 8개 사용 for문 돌려서 내려가는거 구현한거
+//         //오른쪽으로 흘려가게 해주는걸 생각해줘야함 
         
-        MAX7219Send(1, turnOn[i][0],turnOn[i][0],turnOn[i][0],turnOn[i][0]);
-        MAX7219Send(2, turnOn[i][1],turnOn[i][1],turnOn[i][1],turnOn[i][1]);
-        MAX7219Send(3, turnOn[i][2],turnOn[i][2],turnOn[i][2],turnOn[i][2]);
-        MAX7219Send(4, turnOn[i][3],turnOn[i][3],turnOn[i][3],turnOn[i][3]);
-        MAX7219Send(5, turnOn[i][4],turnOn[i][4],turnOn[i][4],turnOn[i][4]);
-        MAX7219Send(6, turnOn[i][5],turnOn[i][5],turnOn[i][5],turnOn[i][5]);
-        MAX7219Send(7, turnOn[i][6],turnOn[i][6],turnOn[i][6],turnOn[i][6]);
-        MAX7219Send(8, turnOn[i][7],turnOn[i][7],turnOn[i][7],turnOn[i][7]);
+//         MAX7219Send(1, turnOn[i][0],turnOn[i][0],turnOn[i][0],turnOn[i][0]);
+//         MAX7219Send(2, turnOn[i][1],turnOn[i][1],turnOn[i][1],turnOn[i][1]);
+//         MAX7219Send(3, turnOn[i][2],turnOn[i][2],turnOn[i][2],turnOn[i][2]);
+//         MAX7219Send(4, turnOn[i][3],turnOn[i][3],turnOn[i][3],turnOn[i][3]);
+//         MAX7219Send(5, turnOn[i][4],turnOn[i][4],turnOn[i][4],turnOn[i][4]);
+//         MAX7219Send(6, turnOn[i][5],turnOn[i][5],turnOn[i][5],turnOn[i][5]);
+//         MAX7219Send(7, turnOn[i][6],turnOn[i][6],turnOn[i][6],turnOn[i][6]);
+//         MAX7219Send(8, turnOn[i][7],turnOn[i][7],turnOn[i][7],turnOn[i][7]);
 
-        delay(200);
-        }
-    }
-}
+//         delay(200);
+//         }
+//     }
+// }
 
 void turnOnLEDMatrix(int pattern){
     switch(pattern){
         case 1 : {
             printf(">>>> case 1"); 
-            int turnOn[9][9] = { 
-                {0, 16, 56, 124, 254, 238, 68, 0, 0 }, 
-                { 16, 56, 124, 254, 238, 68, 0, 0 ,0 },
-                { 56, 124, 254, 238, 68, 0, 0 ,0, 16 },
-                { 124, 254, 238, 68, 0, 0 ,0, 16 ,56 },
-                { 254, 238, 68, 0, 0 ,0, 16 ,56 ,124 },
-                { 238, 68, 0, 0 ,0, 16 ,56 ,124, 254 },
-                { 68, 0, 0 ,0, 16 ,56 ,124, 254, 238 },
-                { 0, 0 ,0, 16 ,56 ,124, 254, 238, 68 },
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 }}; 
-                // 0, 16, 56, 124, 254, 238, 68, 0, 0 //하트
-                for(;;){//무한루프
-                    for(int i=0; i<8; i++) {
-                        //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨
+            int heart[15][8] = { 
+                    {0, 16, 56, 124, 254, 238, 68, 0}, 
+                    {0, 32, 112, 248, 252, 220, 136, 0},
+                    {0, 64, 224, 240, 248, 184, 16, 0},
+                    {0, 128, 192, 224, 240, 112, 32, 0},
+                    {0, 0, 128, 192, 224, 224, 64, 0},
+                    {0, 0, 0, 128, 192, 192, 128, 0},
+                    {0, 0, 0, 0, 128, 128, 0, 0},
+
+                    {0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 1, 1, 0, 0},
+                    {0, 0, 0, 1, 3, 3, 1, 0}, 
+                    {0, 0, 1, 3, 7, 7, 2, 0},
+                    {0, 1, 3, 7, 15, 14, 4, 0},
+                    {0, 2, 7, 15, 31, 29, 8, 0},
+                    {0, 4, 14, 31, 63, 59, 17, 0},
+                    {0, 8, 28, 62, 127, 119, 34, 0},        
+                    };
+                for(;;){
+                    int num=0;
+                    int j=0;
+                    for(int i=0; i<15; i++) {                                   
+                        j=num+7;
+                        //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨        
                         MAX7219Send(DECODE_MODE, 0,0,0,0);   // Set BCD decode mode on
                         MAX7219Send(DISPLAY_TEST, 0,0,0,0);  // Disable test mode
                         MAX7219Send(INTENSITY, 1,1,1,1);     // set brightness 0 to 15
                         MAX7219Send(SHUTDOWN, 1,1,1,1);      // come out of shutdown mode   / turn on the digits
-
-                        //행으로 8개 사용 for문 돌려서 내려가는거 구현한거
-                        //오른쪽으로 흘려가게 해주는걸 생각해줘야함 
                         
-                        MAX7219Send(1, turnOn[i][0],turnOn[i][0],turnOn[i][0],turnOn[i][0]);
-                        MAX7219Send(2, turnOn[i][1],turnOn[i][1],turnOn[i][1],turnOn[i][1]);
-                        MAX7219Send(3, turnOn[i][2],turnOn[i][2],turnOn[i][2],turnOn[i][2]);
-                        MAX7219Send(4, turnOn[i][3],turnOn[i][3],turnOn[i][3],turnOn[i][3]);
-                        MAX7219Send(5, turnOn[i][4],turnOn[i][4],turnOn[i][4],turnOn[i][4]);
-                        MAX7219Send(6, turnOn[i][5],turnOn[i][5],turnOn[i][5],turnOn[i][5]);
-                        MAX7219Send(7, turnOn[i][6],turnOn[i][6],turnOn[i][6],turnOn[i][6]);
-                        MAX7219Send(8, turnOn[i][7],turnOn[i][7],turnOn[i][7],turnOn[i][7]);
-
-                        delay(200);
+                        MAX7219Send(1, heart[j][0],heart[i][0],heart[j][0],heart[i][0]); // (행, 4,3,2,1)
+                        MAX7219Send(2, heart[j][1],heart[i][1],heart[j][1],heart[i][1]);
+                        MAX7219Send(3, heart[j][2],heart[i][2],heart[j][2],heart[i][2]);          
+                        MAX7219Send(4, heart[j][3],heart[i][3],heart[j][3],heart[i][3]);        
+                        MAX7219Send(5, heart[j][4],heart[i][4],heart[j][4],heart[i][4]);      
+                        MAX7219Send(6, heart[j][5],heart[i][5],heart[j][5],heart[i][5]);          
+                        MAX7219Send(7, heart[j][6],heart[i][6],heart[j][6],heart[i][6]);          
+                        MAX7219Send(8, heart[j][7],heart[i][7],heart[j][7],heart[i][7]);  
+                                
+                        if(j==14){
+                            num=-7;
                         }
+
+                        delay(500);
+                        num++; 
+                    }
+                    j--;
                     }
         }
             break;
         case 2 : {
-            int turnOn[9][9] ={ {0, 0, 56, 124, 0, 0, 68, 0, 0 }, 
-                { 16, 56, 124, 0, 238, 68, 0, 0 ,0 },
-                { 56, 124, 254, 0, 68, 0, 0 ,0, 16 },
-                { 124, 254, 238, 68, 0, 0 ,0, 16 ,56 },
-                { 254, 0, 68, 0, 0 ,0, 16 ,56 ,124 },
-                { 0, 68, 0, 0 ,0, 16 ,56 ,124, 254 },
-                { 68, 0, 0 ,0, 16 ,56 ,124, 254, 238 },
-                { 0, 0 ,0, 16 ,56 ,124, 254, 238, 68 },
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
-                startLED(turnOn);
+            int heart[15][8] = { 
+                {3, 3, 3, 3, 3, 3, 3, 3}, 
+                {6, 6, 6, 6, 6, 6, 6, 6},
+                {12, 12, 12, 12, 12, 12, 12, 12},
+                {24, 24, 24, 24, 24, 24, 24, 24},
+                {48, 48, 48, 48, 48, 48, 48, 48},
+                {96, 96, 96, 96, 96, 96, 96, 96},
+                {192, 192, 192, 192, 192, 192, 192, 192},
+
+                {0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {3, 3, 3, 3, 3, 3, 3, 3},
+                };
+                for(;;){
+                    int num=0;
+                    int j=0;
+                    for(int i=0; i<15; i++) {                                   
+                        j=num+7;
+                        //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨        
+                        MAX7219Send(DECODE_MODE, 0,0,0,0);   // Set BCD decode mode on
+                        MAX7219Send(DISPLAY_TEST, 0,0,0,0);  // Disable test mode
+                        MAX7219Send(INTENSITY, 1,1,1,1);     // set brightness 0 to 15
+                        MAX7219Send(SHUTDOWN, 1,1,1,1);      // come out of shutdown mode   / turn on the digits
+                        
+                        MAX7219Send(1, heart[j][0],heart[i][0],heart[j][0],heart[i][0]); // (행, 4,3,2,1)
+                        MAX7219Send(2, heart[j][1],heart[i][1],heart[j][1],heart[i][1]);
+                        MAX7219Send(3, heart[j][2],heart[i][2],heart[j][2],heart[i][2]);          
+                        MAX7219Send(4, heart[j][3],heart[i][3],heart[j][3],heart[i][3]);        
+                        MAX7219Send(5, heart[j][4],heart[i][4],heart[j][4],heart[i][4]);      
+                        MAX7219Send(6, heart[j][5],heart[i][5],heart[j][5],heart[i][5]);          
+                        MAX7219Send(7, heart[j][6],heart[i][6],heart[j][6],heart[i][6]);          
+                        MAX7219Send(8, heart[j][7],heart[i][7],heart[j][7],heart[i][7]);  
+                                
+                        if(j==14){
+                            num=-7;
+                        }
+
+                        delay(30);
+                        num++; 
+                    }
+                    j--;
+                    }
         }
             break;  
         case 3 : {
-            int turnOn[9][9] ={ {0, 16, 23, 124, 43, 1, 2, 0, 0 }, 
-                { 16, 56, 124, 254, 238, 68, 0, 0 ,0 },
-                { 56, 124, 254, 23, 68, 0, 0 ,0, 16 },
-                { 124, 254, 238, 68, 0, 0 ,0, 16 ,56 },
-                { 254, 238, 68, 0, 0 ,0, 16 ,56 ,124 },
-                { 238, 68, 0, 0 ,0, 16 ,56 ,124, 254 },
-                { 68, 0, 0 ,0, 16 ,56 ,124, 254, 238 },
-                { 0, 0 ,0, 16 ,56 ,124, 254, 238, 68 },
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
-                startLED(turnOn);
+            int heart[15][8] = { 
+                {0, 16, 32, 127, 32, 16, 0, 0}, 
+                {0, 32, 64, 254, 64, 32, 0, 0},
+                {0, 64, 128, 252, 128, 64, 0, 0},
+                {0, 128, 0, 248, 0, 128, 0, 0},
+                {0, 0, 0, 240, 0, 0, 0, 0},
+                {0, 0, 0, 224, 0, 0, 0, 0},
+                {0, 0, 0, 192, 0, 0, 0, 0},
+
+                {0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 1, 0, 0, 0, 0},
+                {0, 0, 1, 3, 1, 0, 0, 0},
+                {0, 1, 2, 7, 2, 1, 0, 0},
+                {0, 2, 4, 15, 4, 2, 0, 0},
+                {0, 4, 8, 31, 8, 4, 0, 0},
+                {0, 8, 16, 63, 16, 8, 0, 0},
+                {0, 16, 32, 127, 32, 16, 0, 0},
+                };
+                
+                for(;;){
+                int num=0;
+                int j=0;
+                for(int i=0; i<15; i++) {                                   
+                    j=num+7;
+                    //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨        
+                    MAX7219Send(DECODE_MODE, 0,0,0,0);   // Set BCD decode mode on
+                    MAX7219Send(DISPLAY_TEST, 0,0,0,0);  // Disable test mode
+                    MAX7219Send(INTENSITY, 1,1,1,1);     // set brightness 0 to 15
+                    MAX7219Send(SHUTDOWN, 1,1,1,1);      // come out of shutdown mode   / turn on the digits
+                    
+                    MAX7219Send(1, heart[j][0],heart[i][0],heart[j][0],heart[i][0]); // (행, 4,3,2,1)
+                    MAX7219Send(2, heart[j][1],heart[i][1],heart[j][1],heart[i][1]);
+                    MAX7219Send(3, heart[j][2],heart[i][2],heart[j][2],heart[i][2]);          
+                    MAX7219Send(4, heart[j][3],heart[i][3],heart[j][3],heart[i][3]);        
+                    MAX7219Send(5, heart[j][4],heart[i][4],heart[j][4],heart[i][4]);      
+                    MAX7219Send(6, heart[j][5],heart[i][5],heart[j][5],heart[i][5]);          
+                    MAX7219Send(7, heart[j][6],heart[i][6],heart[j][6],heart[i][6]);          
+                    MAX7219Send(8, heart[j][7],heart[i][7],heart[j][7],heart[i][7]);  
+                            
+                    if(j==14){
+                        num=-7;
+                    }
+
+                    delay(200);
+                    num++; 
+                }
+                j--;
+                }
         }
             break; 
         case 4 : {
-            int turnOn[9][9] ={ {0, 6, 4, 4, 54, 38, 8, 0, 0 }, 
-                { 16, 56, 124, 254, 238, 68, 0, 0 ,0 },
-                { 56, 124, 254, 2, 68, 0, 0 ,0, 16 },
-                { 124, 254, 2, 68, 0, 0 ,0, 16 ,56 },
-                { 254, 238, 68, 0, 0 ,0, 16 ,56 ,124 },
-                { 238, 68, 0, 0 ,0, 16 ,0 ,124, 254 },
-                { 68, 0, 0 ,0, 16 ,56 ,124, 254, 238 },
-                { 0, 0 ,0, 16 ,56 ,124, 254, 238, 68 },
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
-                startLED(turnOn);
+           int heart[16][8] = { 
+                {0, 101, 21, 117, 87, 33, 1, 0}, 
+                {0, 37, 85, 85, 37, 5, 5, 0},
+                {0, 138, 85, 85, 128, 0, 0, 0},
+                {0, 68, 69, 93, 68, 64, 0, 0},
+
+                {0, 178, 138, 186, 171, 144, 128, 0},
+                {0, 18, 170, 170, 18, 2, 2, 0},
+                {0, 69, 170, 170, 64, 0, 0, 0},
+                {0, 34, 162, 46, 34, 32, 32, 0}, 
+
+                {0, 73, 85, 85, 73, 64, 64, 0},
+                {0, 137, 85, 85, 9, 1, 1, 0},
+                {0, 34, 85, 85, 32, 0, 0, 0},
+                {0, 145, 81, 151, 17, 16, 16, 0},
+
+                {0, 164, 170, 170, 164, 160, 160, 0},
+                {0, 137, 85, 85, 9, 1, 1, 0},
+                {0, 145, 170, 170, 144, 0, 0, 0},
+                {0, 200, 168, 203, 136, 136, 136, 0},
+                };
+                
+                for(;;){      
+                int i=0;
+                for(int k=0; k<4; k++){
+                    i=4*k;
+                    //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨        
+                    MAX7219Send(DECODE_MODE, 0,0,0,0);   // Set BCD decode mode on
+                    MAX7219Send(DISPLAY_TEST, 0,0,0,0);  // Disable test mode
+                    MAX7219Send(INTENSITY, 1,1,1,1);     // set brightness 0 to 15
+                    MAX7219Send(SHUTDOWN, 1,1,1,1);      // come out of shutdown mode   / turn on the digits
+                    
+                    MAX7219Send(1, heart[i+3][0],heart[i+2][0],heart[i+1][0],heart[i][0]); // (행, 4,3,2,1)
+                    MAX7219Send(2, heart[i+3][1],heart[i+2][1],heart[i+1][1],heart[i][1]);
+                    MAX7219Send(3, heart[i+3][2],heart[i+2][2],heart[i+1][2],heart[i][2]);          
+                    MAX7219Send(4, heart[i+3][3],heart[i+2][3],heart[i+1][3],heart[i][3]);        
+                    MAX7219Send(5, heart[i+3][4],heart[i+2][4],heart[i+1][4],heart[i][4]);      
+                    MAX7219Send(6, heart[i+3][5],heart[i+2][5],heart[i+1][5],heart[i][5]);          
+                    MAX7219Send(7, heart[i+3][6],heart[i+2][6],heart[i+1][6],heart[i][6]);          
+                    MAX7219Send(8, heart[i+3][7],heart[i+2][7],heart[i+1][7],heart[i][7]);  
+
+                    delay(1000);
+                }
+            }
         }
             break; 
         case 5 : {
@@ -366,7 +488,28 @@ void turnOnLEDMatrix(int pattern){
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  {0, 0, 0, 0, 0, 0, 0, 0, 0 }};
-                 startLED(turnOn);
+                for(;;){      
+                int i=0;
+                for(int k=0; k<4; k++){
+                    i=4*k;
+                    //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨        
+                    MAX7219Send(DECODE_MODE, 0,0,0,0);   // Set BCD decode mode on
+                    MAX7219Send(DISPLAY_TEST, 0,0,0,0);  // Disable test mode
+                    MAX7219Send(INTENSITY, 1,1,1,1);     // set brightness 0 to 15
+                    MAX7219Send(SHUTDOWN, 1,1,1,1);      // come out of shutdown mode   / turn on the digits
+                    
+                    MAX7219Send(1, heart[i+3][0],heart[i+2][0],heart[i+1][0],heart[i][0]); // (행, 4,3,2,1)
+                    MAX7219Send(2, heart[i+3][1],heart[i+2][1],heart[i+1][1],heart[i][1]);
+                    MAX7219Send(3, heart[i+3][2],heart[i+2][2],heart[i+1][2],heart[i][2]);          
+                    MAX7219Send(4, heart[i+3][3],heart[i+2][3],heart[i+1][3],heart[i][3]);        
+                    MAX7219Send(5, heart[i+3][4],heart[i+2][4],heart[i+1][4],heart[i][4]);      
+                    MAX7219Send(6, heart[i+3][5],heart[i+2][5],heart[i+1][5],heart[i][5]);          
+                    MAX7219Send(7, heart[i+3][6],heart[i+2][6],heart[i+1][6],heart[i][6]);          
+                    MAX7219Send(8, heart[i+3][7],heart[i+2][7],heart[i+1][7],heart[i][7]);  
+
+                    delay(1000);
+                }
+            }
         }
             break; 
         default :{
@@ -380,7 +523,28 @@ void turnOnLEDMatrix(int pattern){
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  {0, 0, 0, 0, 0, 0, 0, 0, 0 }};   
-                 startLED(turnOn);
+                 for(;;){      
+                        int i=0;
+                        for(int k=0; k<4; k++){
+                            i=4*k;
+                            //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨        
+                            MAX7219Send(DECODE_MODE, 0,0,0,0);   // Set BCD decode mode on
+                            MAX7219Send(DISPLAY_TEST, 0,0,0,0);  // Disable test mode
+                            MAX7219Send(INTENSITY, 1,1,1,1);     // set brightness 0 to 15
+                            MAX7219Send(SHUTDOWN, 1,1,1,1);      // come out of shutdown mode   / turn on the digits
+                            
+                            MAX7219Send(1, heart[i+3][0],heart[i+2][0],heart[i+1][0],heart[i][0]); // (행, 4,3,2,1)
+                            MAX7219Send(2, heart[i+3][1],heart[i+2][1],heart[i+1][1],heart[i][1]);
+                            MAX7219Send(3, heart[i+3][2],heart[i+2][2],heart[i+1][2],heart[i][2]);          
+                            MAX7219Send(4, heart[i+3][3],heart[i+2][3],heart[i+1][3],heart[i][3]);        
+                            MAX7219Send(5, heart[i+3][4],heart[i+2][4],heart[i+1][4],heart[i][4]);      
+                            MAX7219Send(6, heart[i+3][5],heart[i+2][5],heart[i+1][5],heart[i][5]);          
+                            MAX7219Send(7, heart[i+3][6],heart[i+2][6],heart[i+1][6],heart[i][6]);          
+                            MAX7219Send(8, heart[i+3][7],heart[i+2][7],heart[i+1][7],heart[i][7]);  
+
+                            delay(1000);
+                        }
+                    }
                  }
     }
 
