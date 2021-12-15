@@ -155,25 +155,23 @@ void *clnt_connection(void *arg)
         // led�� On/Off �и�
         strcpy(opt, strtok(NULL, "="));
         strcpy(var, strtok(NULL, "="));
-        
-        printf(var);
 
         printf("%s=%s\n", opt, var);  //입력값 체크하는 부분
         if(!strcmp(opt, "led") && !strcmp(var, "p1")) {
+            printf("start pattern : %s\n", var);
             turnOnLEDMatrix(1);
-            printf(var);
         } else if(!strcmp(opt, "led") && !strcmp(var, "p2")) {
+            printf("start pattern : %s\n", var);
             turnOnLEDMatrix(2);
-            printf(var);  
         } else if(!strcmp(opt, "led") && !strcmp(var, "p3")) {
+            printf("start pattern : %s\n", var);
             turnOnLEDMatrix(3); 
-            printf(var); 
         } else if(!strcmp(opt, "led") && !strcmp(var, "p4")) {
+            printf("start pattern : %s\n", var);
             turnOnLEDMatrix(4); 
-            printf(var);
         }else if(!strcmp(opt, "led") && !strcmp(var, "p5")) {
+            printf("start pattern : %s\n", var);
             turnOnLEDMatrix(5);
-            printf(var);
         }
         
     }
