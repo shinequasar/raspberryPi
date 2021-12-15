@@ -255,6 +255,7 @@ void turnOnLEDMatrix(int pattern){
                 { 0, 0 ,0, 16 ,56 ,124, 254, 238, 68 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0 }}; 
                 // 0, 16, 56, 124, 254, 238, 68, 0, 0 //하트
+                startLED(turnOn);
         }
             break;
         case 2 : {
@@ -267,6 +268,7 @@ void turnOnLEDMatrix(int pattern){
                 { 68, 0, 0 ,0, 16 ,56 ,124, 254, 238 },
                 { 0, 0 ,0, 16 ,56 ,124, 254, 238, 68 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
+                startLED(turnOn);
         }
             break;  
         case 3 : {
@@ -279,6 +281,7 @@ void turnOnLEDMatrix(int pattern){
                 { 68, 0, 0 ,0, 16 ,56 ,124, 254, 238 },
                 { 0, 0 ,0, 16 ,56 ,124, 254, 238, 68 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
+                startLED(turnOn);
         }
             break; 
         case 4 : {
@@ -291,6 +294,7 @@ void turnOnLEDMatrix(int pattern){
                 { 68, 0, 0 ,0, 16 ,56 ,124, 254, 238 },
                 { 0, 0 ,0, 16 ,56 ,124, 254, 238, 68 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
+                startLED(turnOn);
         }
             break; 
         case 5 : {
@@ -303,9 +307,10 @@ void turnOnLEDMatrix(int pattern){
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  {0, 0, 0, 0, 0, 0, 0, 0, 0 }};
+                 startLED(turnOn);
         }
             break; 
-        default :
+        default :{
             printf(">>>> erroer"); 
             int turnOn[9][9] ={{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }, 
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -316,8 +321,13 @@ void turnOnLEDMatrix(int pattern){
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  {0, 0, 0, 0, 0, 0, 0, 0, 0 }};   
+                 startLED(turnOn);
+                 }
     }
 
+    
+
+    void startLED(int turnOn[][]){
     for(;;){//무한루프
     for(int i=0; i<8; i++) {
         //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨
@@ -340,5 +350,6 @@ void turnOnLEDMatrix(int pattern){
 
         delay(200);
         }
+    }
     }
 }
