@@ -280,7 +280,6 @@ void sendError(FILE *fp)
 void turnOnLEDMatrix(int pattern){
     switch(pattern){
         case 1 : {
-            bool onoff = true;
             printf(">>>> case 1"); 
             int heart[15][8] = { 
                     {0, 16, 56, 124, 254, 238, 68, 0}, 
@@ -300,7 +299,6 @@ void turnOnLEDMatrix(int pattern){
                     {0, 4, 14, 31, 63, 59, 17, 0},
                     {0, 8, 28, 62, 127, 119, 34, 0},        
                     };
-                while(onoff){
                     int num=0;
                     int j=0;
                     for(int i=0; i<15; i++) {                                   
@@ -329,11 +327,9 @@ void turnOnLEDMatrix(int pattern){
                     }
                     j--;
                     if(pattern != 1){onoff=false; break;} 
-                    }
         }
             break;
         case 2 : {
-        bool onoff = true;
             int heart[15][8] = { 
                 {3, 3, 3, 3, 3, 3, 3, 3}, 
                 {6, 6, 6, 6, 6, 6, 6, 6},
@@ -352,7 +348,6 @@ void turnOnLEDMatrix(int pattern){
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {3, 3, 3, 3, 3, 3, 3, 3},
                 };
-                while(onoff){
                     int num=0;
                     int j=0;
                     for(int i=0; i<15; i++) {                                   
@@ -381,11 +376,9 @@ void turnOnLEDMatrix(int pattern){
                     }
                     j--;
                     if(pattern != 2) break;
-                    }
         }
             break;  
         case 3 : {
-            bool onoff = true;
             int heart[15][8] = { 
                 {0, 16, 32, 127, 32, 16, 0, 0}, 
                 {0, 32, 64, 254, 64, 32, 0, 0},
@@ -405,7 +398,6 @@ void turnOnLEDMatrix(int pattern){
                 {0, 16, 32, 127, 32, 16, 0, 0},
                 };
                 
-                 while(onoff){
                 int num=0;
                 int j=0;
                 for(int i=0; i<15; i++) {                                   
@@ -434,11 +426,9 @@ void turnOnLEDMatrix(int pattern){
                 }
                 j--;
                 if(pattern != 3) break;
-                }
         }
             break; 
         case 4 : {
-            bool onoff = true;
            int heart[16][8] = { 
                 {0, 101, 21, 117, 87, 33, 1, 0}, 
                 {0, 37, 85, 85, 37, 5, 5, 0},
@@ -461,7 +451,6 @@ void turnOnLEDMatrix(int pattern){
                 {0, 200, 168, 203, 136, 136, 136, 0},
                 };
                 
-                while(onoff){      
                 int i=0;
                 for(int k=0; k<4; k++){
                     i=4*k;
@@ -483,11 +472,9 @@ void turnOnLEDMatrix(int pattern){
                     delay(1000);
                 }
                 if(pattern != 4) break;
-            }
         }
            break; 
         case 5 : {
-            bool onoff = true;
           int heart[9][9] =
                 { // 128 64 32 16 8 4 2 1
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // N
@@ -502,13 +489,13 @@ void turnOnLEDMatrix(int pattern){
                 };
                 
                 MAX7219Send(1, heart[0][0],heart[0][0],heart[0][0],heart[0][0]); // (행, 4,3,2,1)
-                 MAX7219Send(2, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
-                  MAX7219Send(3, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
-                   MAX7219Send(4, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
-                    MAX7219Send(5, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
-                     MAX7219Send(6, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
-                      MAX7219Send(7, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
-                       MAX7219Send(8, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+                MAX7219Send(2, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+                MAX7219Send(3, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+                MAX7219Send(4, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+                MAX7219Send(5, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+                MAX7219Send(6, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+                MAX7219Send(7, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+                MAX7219Send(8, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
 
         }
             break; 
