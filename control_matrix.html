@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <title>LED MATRIX CONTROLLER</title>
+</head>
+<body style="background-color:#FFEBCD">
+    <form action="control_matrix.html" method="GET" onSubmit="document.reload()" style="text-align:center; margin:10vh; font-family: 'Jua', sans-serif;">
+        <h4 >- 마이크로 임베디드시스템 -</h4>
+        <h1 style="background:white; padding:9px; width:60%; margin:auto"> LED MATRIX CONTROLLER </h1>
+        <h4>정소연, 전민주</h4>
+        <h4 style="margin-top:30px;">* 원하는 패턴을 선택한 후 전송해주세요.</h4>
+        <table style="width:60%; height: 30%; margin: auto; text-align: center; font-size:25px; margin-top:30px;" class="table table-hover">
+            <tr class="warning" >
+                <td ><strong>LED Pattern 1</strong><br>(하트)</td>
+                <td  ><input type="radio" name="led" value="pattern1"/> 선택하기</td>
+            </tr>
+            <tr class="warning">
+                <td><strong>LED  Pattern 2</strong><br>(스트라이프)</td>
+                <td><input type="radio" name="led" value="pattern2"/> 선택하기</td>
+            </tr>
+            <tr class="warning">
+                <td><strong>LED  Pattern 3</strong><br>(그라데이션)</td>
+                <td><input type="radio" name="led" value="pattern3"/> 선택하기</td>
+            </tr>
+            <tr class="warning">
+                <td><strong>LED  Pattern 4</strong><br>(화살표)</td>
+                <td><input type="radio" name="led" value="pattern4"/> 선택하기</td>
+            </tr>
+            <tr class="warning">
+                <td><strong>LED  Off</strong></td>
+                <td><input type="radio" name="led" value="pattern5"/> 선택하기</td>
+            </tr>
+            <tr class="success">
+                <td  style="color:green"><strong>SUBMIT</strong></td>
+                <td><input type="submit" value="전송하기" class="btn btn-success" style="width:100%"/></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
