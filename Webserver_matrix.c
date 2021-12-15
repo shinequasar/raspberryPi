@@ -192,6 +192,7 @@ void *clnt_connection(void *arg)
 
 int sendData(int fd, FILE *fp, char *file_name)
 {
+    if(file_name == "favicon.ico") return 0;
     char protocol[] = "HTTP/1.1 200 OK\r\n";
     char server[] = "Server:Netscape-Enterprise\6.0\r\n";
     char cnt_type[] = "Content-Type:text/html\r\n";
