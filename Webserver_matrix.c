@@ -280,6 +280,7 @@ void sendError(FILE *fp)
 void turnOnLEDMatrix(int pattern){
     switch(pattern){
         case 1 : {
+            bool onoff = true;
             printf(">>>> case 1"); 
             int heart[15][8] = { 
                     {0, 16, 56, 124, 254, 238, 68, 0}, 
@@ -299,7 +300,7 @@ void turnOnLEDMatrix(int pattern){
                     {0, 4, 14, 31, 63, 59, 17, 0},
                     {0, 8, 28, 62, 127, 119, 34, 0},        
                     };
-                for(;;){
+                while(onoff){
                     int num=0;
                     int j=0;
                     for(int i=0; i<15; i++) {                                   
@@ -329,8 +330,9 @@ void turnOnLEDMatrix(int pattern){
                     j--;
                     }
         }
-            break;
+           onoff=false; break;
         case 2 : {
+        bool onoff = true;
             int heart[15][8] = { 
                 {3, 3, 3, 3, 3, 3, 3, 3}, 
                 {6, 6, 6, 6, 6, 6, 6, 6},
@@ -349,7 +351,7 @@ void turnOnLEDMatrix(int pattern){
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {3, 3, 3, 3, 3, 3, 3, 3},
                 };
-                for(;;){
+                while(onoff){
                     int num=0;
                     int j=0;
                     for(int i=0; i<15; i++) {                                   
@@ -379,8 +381,9 @@ void turnOnLEDMatrix(int pattern){
                     j--;
                     }
         }
-            break;  
+           onoff=false;  break;  
         case 3 : {
+            bool onoff = true;
             int heart[15][8] = { 
                 {0, 16, 32, 127, 32, 16, 0, 0}, 
                 {0, 32, 64, 254, 64, 32, 0, 0},
@@ -400,7 +403,7 @@ void turnOnLEDMatrix(int pattern){
                 {0, 16, 32, 127, 32, 16, 0, 0},
                 };
                 
-                for(;;){
+                 while(onoff){
                 int num=0;
                 int j=0;
                 for(int i=0; i<15; i++) {                                   
@@ -430,8 +433,9 @@ void turnOnLEDMatrix(int pattern){
                 j--;
                 }
         }
-            break; 
+          onoff=false;   break; 
         case 4 : {
+            bool onoff = true;
            int heart[16][8] = { 
                 {0, 101, 21, 117, 87, 33, 1, 0}, 
                 {0, 37, 85, 85, 37, 5, 5, 0},
@@ -454,7 +458,7 @@ void turnOnLEDMatrix(int pattern){
                 {0, 200, 168, 203, 136, 136, 136, 0},
                 };
                 
-                for(;;){      
+                while(onoff){      
                 int i=0;
                 for(int k=0; k<4; k++){
                     i=4*k;
@@ -477,8 +481,9 @@ void turnOnLEDMatrix(int pattern){
                 }
             }
         }
-            break; 
+           onoff=false;  break; 
         case 5 : {
+            bool onoff = true;
           int heart[9][9] =
                 { // 128 64 32 16 8 4 2 1
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // N
@@ -502,7 +507,7 @@ void turnOnLEDMatrix(int pattern){
                        MAX7219Send(8, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
 
         }
-            break; 
+           onoff=false;  break; 
         default :{
             printf(">>>> erroer"); 
             int heart[9][9] ={{ 0, 123, 0, 123, 0, 42, 0, 4, 0 }, 
@@ -514,7 +519,7 @@ void turnOnLEDMatrix(int pattern){
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  {0, 0, 0, 0, 0, 0, 0, 0, 0 }};   
-                 for(;;){      
+                  while(onoff){      
                         int i=0;
                         for(int k=0; k<4; k++){
                             i=4*k;
