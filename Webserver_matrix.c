@@ -159,19 +159,19 @@ void *clnt_connection(void *arg)
         printf(var);
 
         printf("%s=%s\n", opt, var);  //입력값 체크하는 부분
-        if(!strcmp(opt, "led") && !strcmp(var, "pattern1")) {
+        if(!strcmp(opt, "led") && !strcmp(var, "p1")) {
             turnOnLEDMatrix(1);
             printf(var);
-        } else if(!strcmp(opt, "led") && !strcmp(var, "pattern2")) {
+        } else if(!strcmp(opt, "led") && !strcmp(var, "p2")) {
             turnOnLEDMatrix(2);
             printf(var);  
-        } else if(!strcmp(opt, "led") && !strcmp(var, "pattern3")) {
+        } else if(!strcmp(opt, "led") && !strcmp(var, "p3")) {
             turnOnLEDMatrix(3); 
             printf(var); 
-        } else if(!strcmp(opt, "led") && !strcmp(var, "pattern4")) {
+        } else if(!strcmp(opt, "led") && !strcmp(var, "p4")) {
             turnOnLEDMatrix(4); 
             printf(var);
-        }else if(!strcmp(opt, "led") && !strcmp(var, "pattern5")) {
+        }else if(!strcmp(opt, "led") && !strcmp(var, "p5")) {
             turnOnLEDMatrix(5);
             printf(var);
         }
