@@ -328,9 +328,10 @@ void turnOnLEDMatrix(int pattern){
                         num++; 
                     }
                     j--;
+                    if(pattern != 1) break;
                     }
         }
-           onoff=false; break;
+            break;
         case 2 : {
         bool onoff = true;
             int heart[15][8] = { 
@@ -379,9 +380,10 @@ void turnOnLEDMatrix(int pattern){
                         num++; 
                     }
                     j--;
+                    if(pattern != 1) break;
                     }
         }
-           onoff=false;  break;  
+            break;  
         case 3 : {
             bool onoff = true;
             int heart[15][8] = { 
@@ -431,9 +433,10 @@ void turnOnLEDMatrix(int pattern){
                     num++; 
                 }
                 j--;
+                if(pattern != 1) break;
                 }
         }
-          onoff=false;   break; 
+            break; 
         case 4 : {
             bool onoff = true;
            int heart[16][8] = { 
@@ -479,9 +482,10 @@ void turnOnLEDMatrix(int pattern){
 
                     delay(1000);
                 }
+                if(pattern != 1) break;
             }
         }
-           onoff=false;  break; 
+           break; 
         case 5 : {
             bool onoff = true;
           int heart[9][9] =
@@ -507,7 +511,7 @@ void turnOnLEDMatrix(int pattern){
                        MAX7219Send(8, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
 
         }
-           onoff=false;  break; 
+            break; 
         default :{
             printf(">>>> erroer"); 
             int heart[9][9] ={{ 0, 123, 0, 123, 0, 42, 0, 4, 0 }, 
