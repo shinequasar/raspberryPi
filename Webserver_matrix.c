@@ -321,8 +321,7 @@ void turnOnLEDMatrix(int pattern){
                         if(j==14){
                             num=-7;
                         }
-
-                        delay(500);
+                        delay(200);
                         num++; 
                     }
                     j--;
@@ -348,6 +347,8 @@ void turnOnLEDMatrix(int pattern){
                 {0, 0, 0, 0, 0, 0, 0, 0},
                 {3, 3, 3, 3, 3, 3, 3, 3},
                 };
+
+                for(int k=0; k<3; k++){
                     int num=0;
                     int j=0;
                     for(int i=0; i<15; i++) {                                   
@@ -371,11 +372,13 @@ void turnOnLEDMatrix(int pattern){
                             num=-7;
                         }
 
-                        delay(30);
+                        delay(100);
                         num++; 
                     }
                     j--;
                     if(pattern != 2) break;
+                    k++;
+                }
         }
             break;  
         case 3 : {
@@ -469,7 +472,7 @@ void turnOnLEDMatrix(int pattern){
                     MAX7219Send(7, heart[i+3][6],heart[i+2][6],heart[i+1][6],heart[i][6]);          
                     MAX7219Send(8, heart[i+3][7],heart[i+2][7],heart[i+1][7],heart[i][7]);  
 
-                    delay(1000);
+                    delay(200);
                 }
                 if(pattern != 4) break;
         }
