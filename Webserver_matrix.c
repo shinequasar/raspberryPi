@@ -242,6 +242,32 @@ void sendError(FILE *fp)
 }
 
 void turnOnLEDMatrix(int pattern){
+      void startLED(int turnOn[][]){
+    for(;;){//무한루프
+    for(int i=0; i<8; i++) {
+        //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨
+        MAX7219Send(DECODE_MODE, 0,0,0,0);   // Set BCD decode mode on
+        MAX7219Send(DISPLAY_TEST, 0,0,0,0);  // Disable test mode
+        MAX7219Send(INTENSITY, 1,1,1,1);     // set brightness 0 to 15
+        MAX7219Send(SHUTDOWN, 1,1,1,1);      // come out of shutdown mode   / turn on the digits
+
+        //행으로 8개 사용 for문 돌려서 내려가는거 구현한거
+        //오른쪽으로 흘려가게 해주는걸 생각해줘야함 
+        
+        MAX7219Send(1, turnOn[i][0],turnOn[i][0],turnOn[i][0],turnOn[i][0]);
+        MAX7219Send(2, turnOn[i][1],turnOn[i][1],turnOn[i][1],turnOn[i][1]);
+        MAX7219Send(3, turnOn[i][2],turnOn[i][2],turnOn[i][2],turnOn[i][2]);
+        MAX7219Send(4, turnOn[i][3],turnOn[i][3],turnOn[i][3],turnOn[i][3]);
+        MAX7219Send(5, turnOn[i][4],turnOn[i][4],turnOn[i][4],turnOn[i][4]);
+        MAX7219Send(6, turnOn[i][5],turnOn[i][5],turnOn[i][5],turnOn[i][5]);
+        MAX7219Send(7, turnOn[i][6],turnOn[i][6],turnOn[i][6],turnOn[i][6]);
+        MAX7219Send(8, turnOn[i][7],turnOn[i][7],turnOn[i][7],turnOn[i][7]);
+
+        delay(200);
+        }
+    }
+    }
+    
     switch(pattern){
         case 1 : {
             int turnOn[9][9] = { 
@@ -325,31 +351,4 @@ void turnOnLEDMatrix(int pattern){
                  }
     }
 
-    
-
-    void startLED(int turnOn[][]){
-    for(;;){//무한루프
-    for(int i=0; i<8; i++) {
-        //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨
-        MAX7219Send(DECODE_MODE, 0,0,0,0);   // Set BCD decode mode on
-        MAX7219Send(DISPLAY_TEST, 0,0,0,0);  // Disable test mode
-        MAX7219Send(INTENSITY, 1,1,1,1);     // set brightness 0 to 15
-        MAX7219Send(SHUTDOWN, 1,1,1,1);      // come out of shutdown mode   / turn on the digits
-
-        //행으로 8개 사용 for문 돌려서 내려가는거 구현한거
-        //오른쪽으로 흘려가게 해주는걸 생각해줘야함 
-        
-        MAX7219Send(1, turnOn[i][0],turnOn[i][0],turnOn[i][0],turnOn[i][0]);
-        MAX7219Send(2, turnOn[i][1],turnOn[i][1],turnOn[i][1],turnOn[i][1]);
-        MAX7219Send(3, turnOn[i][2],turnOn[i][2],turnOn[i][2],turnOn[i][2]);
-        MAX7219Send(4, turnOn[i][3],turnOn[i][3],turnOn[i][3],turnOn[i][3]);
-        MAX7219Send(5, turnOn[i][4],turnOn[i][4],turnOn[i][4],turnOn[i][4]);
-        MAX7219Send(6, turnOn[i][5],turnOn[i][5],turnOn[i][5],turnOn[i][5]);
-        MAX7219Send(7, turnOn[i][6],turnOn[i][6],turnOn[i][6],turnOn[i][6]);
-        MAX7219Send(8, turnOn[i][7],turnOn[i][7],turnOn[i][7],turnOn[i][7]);
-
-        delay(200);
-        }
-    }
-    }
 }
