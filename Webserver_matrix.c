@@ -176,7 +176,7 @@ void *clnt_connection(void *arg)
         
     }
 
-     if(strstr(file_name, "favicon") != NULL){
+     if(strstr(file_name, "favicon") == NULL){
          // �� ������ 
             do {
                 fgets(reg_line, BUFSIZ, clnt_read);
@@ -210,7 +210,6 @@ int sendData(int fd, FILE *fp, char *file_name)
     fputs(end, fp);
     fflush(fp);
 
-file_name="control_matrix.html";
     fd = open(file_name, O_RDWR);
     do {
         len = read(fd, buf, BUFSIZ);
