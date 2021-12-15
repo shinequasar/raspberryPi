@@ -380,7 +380,7 @@ void turnOnLEDMatrix(int pattern){
                         num++; 
                     }
                     j--;
-                    if(pattern != 1) break;
+                    if(pattern != 2) break;
                     }
         }
             break;  
@@ -433,7 +433,7 @@ void turnOnLEDMatrix(int pattern){
                     num++; 
                 }
                 j--;
-                if(pattern != 1) break;
+                if(pattern != 3) break;
                 }
         }
             break; 
@@ -482,7 +482,7 @@ void turnOnLEDMatrix(int pattern){
 
                     delay(1000);
                 }
-                if(pattern != 1) break;
+                if(pattern != 4) break;
             }
         }
            break; 
