@@ -326,7 +326,7 @@ void turnOnLEDMatrix(int pattern){
                         num++; 
                     }
                     j--;
-                    if(pattern != 1){onoff=false; break;} 
+                    if(pattern != 1) break; 
         }
             break;
         case 2 : {
