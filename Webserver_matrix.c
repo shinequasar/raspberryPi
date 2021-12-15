@@ -28,6 +28,7 @@ static void *clnt_connection(void *arg);
 int sendData(int fd, FILE *fp, char *file_name);
 void sendOk(FILE *fp);
 void sendError(FILE *fp);
+void turnOnLEDMatrix(int pattern);
 
 static void Send16bits (unsigned short output)
 {
@@ -305,10 +306,8 @@ void turnOnLEDMatrix(int pattern){
             실행문;    
     }
 
-
     for(;;){//무한루프
     for(int i=0; i<8; i++) {
-
         //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨
         MAX7219Send(DECODE_MODE, 0,0,0,0);   // Set BCD decode mode on
         MAX7219Send(DISPLAY_TEST, 0,0,0,0);  // Disable test mode
