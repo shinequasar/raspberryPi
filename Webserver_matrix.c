@@ -183,7 +183,8 @@ void *clnt_connection(void *arg)
         strcpy(reg_buf, reg_line);
     } while(strncmp(reg_line, "\r\n", 2));
     
-    sendData(clnt_fd, clnt_write, file_name);
+    if(strstr(file_name, "favicon") == NULL)
+         sendData(clnt_fd, clnt_write, file_name);
     
     fclose(clnt_read);
     fclose(clnt_write);
