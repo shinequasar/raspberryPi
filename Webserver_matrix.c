@@ -175,19 +175,22 @@ void *clnt_connection(void *arg)
         }
         
     }
-    
-    // �� ������ 
-    do {
-        fgets(reg_line, BUFSIZ, clnt_read);
-        fputs(reg_line, stdout);
-        strcpy(reg_buf, reg_line);
-    } while(strncmp(reg_line, "\r\n", 2));
-    
 
-    sendData(clnt_fd, clnt_write, file_name);
+     if(strstr(file_name, "favicon") != NULL){
+         // �� ������ 
+            do {
+                fgets(reg_line, BUFSIZ, clnt_read);
+                fputs(reg_line, stdout);
+                strcpy(reg_buf, reg_line);
+            } while(strncmp(reg_line, "\r\n", 2));
+            
+
+            sendData(clnt_fd, clnt_write, file_name);
+            
+            fclose(clnt_read);
+            fclose(clnt_write);
+     };
     
-    fclose(clnt_read);
-    fclose(clnt_write);
     return NULL;
 }
 
