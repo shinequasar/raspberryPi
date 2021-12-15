@@ -244,7 +244,7 @@ void sendError(FILE *fp)
 
 void startLED(int turnOnLED[][9]){
     int turnOn[9][9]={ 0, };      
-    memccpy(turnOn, turnOnLED, sizeof(turnOnLED));
+    memcpy(turnOn, turnOnLED, sizeof(turnOnLED));
 
     for(;;){//무한루프
     for(int i=0; i<8; i++) {
