@@ -523,7 +523,7 @@ void turnOnLEDMatrix(int pattern){
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  {0, 0, 0, 0, 0, 0, 0, 0, 0 }};   
-                  while(onoff){      
+                  while(true){      
                         int i=0;
                         for(int k=0; k<4; k++){
                             i=4*k;
