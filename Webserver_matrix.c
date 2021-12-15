@@ -348,7 +348,7 @@ void turnOnLEDMatrix(int pattern){
             break; 
         default :{
             printf(">>>> erroer"); 
-            int turnOn[9][9] ={{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }, 
+            int turnOn[9][9] ={{ 0, 1, 0, 1, 0, 0, 0, 0, 0 }, 
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                  { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
