@@ -479,7 +479,7 @@ void turnOnLEDMatrix(int pattern){
         }
             break; 
         case 5 : {
-          int dot_table[9][9] =
+          int heart[9][9] =
                 { // 128 64 32 16 8 4 2 1
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // N
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // 1
@@ -492,14 +492,15 @@ void turnOnLEDMatrix(int pattern){
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // R
                 };
                 
-                send_MAX7219(1, digit_table[0], dot_table[0][1]);
-                send_MAX7219(2, digit_table[0], dot_table[0][2]);
-                send_MAX7219(3, digit_table[0], dot_table[0][3]);
-                send_MAX7219(4, digit_table[0], dot_table[0][4]);
-                send_MAX7219(5, digit_table[0], dot_table[0][5]);
-                send_MAX7219(6, digit_table[0], dot_table[0][6]);
-                send_MAX7219(7, digit_table[0], dot_table[0][7]);
-                send_MAX7219(8, digit_table[0], dot_table[0][8]);
+                MAX7219Send(1, heart[0][0],heart[0][0],heart[0][0],heart[0][0]); // (행, 4,3,2,1)
+                 MAX7219Send(2, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+                  MAX7219Send(3, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+                   MAX7219Send(4, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+                    MAX7219Send(5, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+                     MAX7219Send(6, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+                      MAX7219Send(7, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+                       MAX7219Send(8, heart[0][0],heart[0][0],heart[0][0],heart[0][0]);
+
         }
             break; 
         default :{
