@@ -303,7 +303,7 @@ void turnOnLEDMatrix(int pattern){
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0 }}; 
             break; 
         default :
-            실행문;    
+            printf(">>>> erroer");    
     }
 
     for(;;){//무한루프
