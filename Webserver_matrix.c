@@ -29,6 +29,7 @@ int sendData(int fd, FILE *fp, char *file_name);
 void sendOk(FILE *fp);
 void sendError(FILE *fp);
 void turnOnLEDMatrix(int pattern);
+void startLED(int turnOn[][]);
 
 static void Send16bits (unsigned short output)
 {
@@ -241,8 +242,7 @@ void sendError(FILE *fp)
     fflush(fp);
 }
 
-void turnOnLEDMatrix(int pattern){
-      void startLED(int turnOn[][]){
+void startLED(int turnOn[][]){
     for(;;){//무한루프
     for(int i=0; i<8; i++) {
         //intensity 1,5,10,15로 하면 "오른쪽부터" 밝기 1,5,10,15로 설정됨
@@ -266,8 +266,11 @@ void turnOnLEDMatrix(int pattern){
         delay(200);
         }
     }
-    }
-    
+}
+
+void turnOnLEDMatrix(int pattern){
+   
+
     switch(pattern){
         case 1 : {
             int turnOn[9][9] = { 
