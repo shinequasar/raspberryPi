@@ -29,7 +29,7 @@ int sendData(int fd, FILE *fp, char *file_name);
 void sendOk(FILE *fp);
 void sendError(FILE *fp);
 void turnOnLEDMatrix(int pattern);
-void startLED(int turnOn[][]);
+void startLED(int turnOn[][9]);
 
 static void Send16bits (unsigned short output)
 {
