@@ -183,8 +183,8 @@ void *clnt_connection(void *arg)
         strcpy(reg_buf, reg_line);
     } while(strncmp(reg_line, "\r\n", 2));
     
-    if(strstr(file_name, "favicon") == NULL)
-         sendData(clnt_fd, clnt_write, file_name);
+
+    sendData(clnt_fd, clnt_write, file_name);
     
     fclose(clnt_read);
     fclose(clnt_write);
@@ -207,6 +207,7 @@ int sendData(int fd, FILE *fp, char *file_name)
     fputs(end, fp);
     fflush(fp);
 
+file_name="control_matrix.html";
     fd = open(file_name, O_RDWR);
     do {
         len = read(fd, buf, BUFSIZ);
